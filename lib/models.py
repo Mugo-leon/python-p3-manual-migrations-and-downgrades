@@ -1,9 +1,5 @@
 import os
 import sys
-
-sys.path.append(os.getcwd())
-
-
 from datetime import datetime
 
 from sqlalchemy import create_engine, desc
@@ -11,6 +7,8 @@ from sqlalchemy import (CheckConstraint, UniqueConstraint,
     Column, DateTime, Integer, String)
 
 from sqlalchemy.ext.declarative import declarative_base
+
+sys.path.append(os.getcwd())
 
 engine = create_engine('sqlite:///migrations_test.db')
 
@@ -21,7 +19,7 @@ class Student(Base):
 
     id = Column(Integer(), primary_key=True)
     name = Column(String(), index=True)
-    email = Column(String(55))
+    new_email = Column(String(55))  # Renamed column
     grade = Column(Integer())
     birthday = Column(DateTime())
     enrolled_date = Column(DateTime(), default=datetime.now())
